@@ -5,7 +5,7 @@ function ProfileHeader({ info }) {
     <div id="ProfileHeader">
       <h3>{info[0].username}</h3>
       <img src={info[0].profilePic} alt="" width="170" height="170" />
-      Currently Reading: {info[0].library[0].alreadyRead[0].title}
+      Currently Reading: {info[0].library.currentRead.title}
     </div>
   );
 }

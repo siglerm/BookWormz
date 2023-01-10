@@ -1,5 +1,5 @@
 const {
-  profile: { getDBProfile, addDBProfile },
+  profile: { getDBProfile, addDBProfile, addDBThought },
 } = require('../models');
 
 const getProfile = (req, res) => {
@@ -22,7 +22,18 @@ const addProfile = (req, res) => {
     });
 };
 
+const addThought = (req, res) => {
+  console.log(req.body);
+  return addDBThought(req.body)
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log('There is an error in controllers: ', error);
+    });
+};
 module.exports = {
   getProfile,
   addProfile,
+  addThought,
 };

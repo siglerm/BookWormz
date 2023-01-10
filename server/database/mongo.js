@@ -19,6 +19,7 @@ try {
 }
 
 const thoughtSchema = new Schema({
+  thought_target: String,
   thought_body: String,
   page: Number,
   mood: String,
@@ -33,7 +34,7 @@ const bookSchema = new Schema({
 });
 
 const librarySchema = new Schema({
-  currentRead: [bookSchema],
+  currentRead: bookSchema,
   alreadyRead: [bookSchema],
   toBeRead: [bookSchema],
 });
@@ -48,7 +49,7 @@ const profileSchema = new Schema({
   profilePic: String,
   beverage: String,
   thoughts: [thoughtSchema],
-  library: [librarySchema],
+  library: librarySchema,
 });
 
 const Profile = mongoose.model('Profile', profileSchema);

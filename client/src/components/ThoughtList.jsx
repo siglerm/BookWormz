@@ -2,8 +2,6 @@ import React from 'react';
 import Thought from './Thought';
 
 function ThoughtList({ thoughts, user, currentBook }) {
-  console.log('thoughts: ', thoughts);
-  console.log('book', currentBook);
   return (
     <div className="thought">
       {thoughts?.length ? (

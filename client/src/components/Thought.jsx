@@ -3,7 +3,7 @@ import React from 'react';
 function Thought({ thought, user, currentBook }) {
   return (
     <div class="thought">
-      <h5>{user} Thoughts:</h5>
+      <h5>{user}'s Thoughts:</h5>
       Mood: {thought.mood}
       <div className="thoughtBody">{thought.thought_body}</div>
       <div className="thoughtFooter">

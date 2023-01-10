@@ -4,6 +4,7 @@ import ThoughtList from './ThoughtList';
 import ProfileHeader from './ProfileHeader';
 
 function Home({ info }) {
+  console.log(info);
   return (
     <div id="Home">
       <Navigation />
@@ -11,7 +12,7 @@ function Home({ info }) {
       <ThoughtList
         thoughts={info[0].thoughts}
         user={info[0].username}
-        currentBook={info[0].library[0].alreadyRead[0]}
+        currentBook={info[0].library.currentRead.title}
       />
     </div>
   );
