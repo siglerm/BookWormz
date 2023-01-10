@@ -2,16 +2,18 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const URI = process.env.URI || 'mongodb://localhost:27017';
+const URI = process.env.URI || 'mongodb://localhost:27017/BookWormz';
 
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
 
+mongoose.set('strictQuery', false);
+
 try {
-  await mongoose.connect(URI, options);
-  console.log('');
+  mongoose.connect(URI, options);
+  console.log('Db is running');
 } catch (error) {
   console.error(error);
 }
@@ -37,7 +39,7 @@ const librarySchema = new Schema({
 });
 
 const profileSchema = new Schema({
-  userName: {
+  username: {
     type: String,
     unique: true,
     required: true,
@@ -49,4 +51,6 @@ const profileSchema = new Schema({
   library: [librarySchema],
 });
 
-mongoose.model('Profile', profileSchema);
+const Profile = mongoose.model('Profile', profileSchema);
+
+module.exports = Profile;
