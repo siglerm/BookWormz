@@ -23,7 +23,8 @@ const thoughtSchema = new Schema({
   thought_body: String,
   page: Number,
   mood: String,
-  date: Date,
+  username: String,
+  profilePic: String,
 });
 
 const bookSchema = new Schema({
@@ -31,12 +32,6 @@ const bookSchema = new Schema({
   author: String,
   summary: String,
   coverImage: String,
-});
-
-const librarySchema = new Schema({
-  currentRead: bookSchema,
-  alreadyRead: [bookSchema],
-  toBeRead: [bookSchema],
 });
 
 const profileSchema = new Schema({
@@ -49,9 +44,32 @@ const profileSchema = new Schema({
   profilePic: String,
   beverage: String,
   thoughts: [thoughtSchema],
-  library: librarySchema,
+  currentRead: bookSchema,
+  alreadyRead: [bookSchema],
+  toBeRead: [bookSchema],
+});
+
+const bookThoughtSchema = new Schema({
+  username: String,
+  thought_target: String,
+  thought_body: String,
+  page: Number,
+  mood: String,
+  date: Date,
+});
+
+const bookInfoSchema = new Schema({
+  title: String,
+  author: String,
+  summary: String,
+  coverImage: String,
+  thoughts: [bookThoughtSchema],
 });
 
 const Profile = mongoose.model('Profile', profileSchema);
+const BookInfo = mongoose.model('BookInfo', bookInfoSchema);
 
-module.exports = Profile;
+module.exports = {
+  Profile,
+  BookInfo,
+};

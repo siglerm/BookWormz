@@ -7,12 +7,11 @@ function Home({ info }) {
   console.log(info);
   return (
     <div id="Home">
-      <Navigation />
       <ProfileHeader info={info} />
       <ThoughtList
         thoughts={info[0].thoughts}
         user={info[0].username}
-        currentBook={info[0].library.currentRead.title}
+        currentBook={info[0].currentRead.title}
       />
     </div>
   );

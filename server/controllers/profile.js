@@ -23,7 +23,6 @@ const addProfile = (req, res) => {
 };
 
 const addThought = (req, res) => {
-  console.log(req.body);
   return addDBThought(req.body)
     .then(() => {
       res.sendStatus(201);

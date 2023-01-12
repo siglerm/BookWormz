@@ -3,7 +3,7 @@ import Thought from './Thought';
 
 function ThoughtList({ thoughts, user, currentBook }) {
   return (
-    <div className="thought">
+    <div className="thoughtList">
       {thoughts?.length ? (
         thoughts?.map((thought, index) => {
           return (

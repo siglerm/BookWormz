@@ -1,11 +1,19 @@
 import React from 'react';
+import Avatar from '@mui/material/Avatar';
 
 function ProfileHeader({ info }) {
   return (
     <div id="ProfileHeader">
-      <h3>{info[0].username}</h3>
-      <img src={info[0].profilePic} alt="" width="170" height="170" />
-      Currently Reading: {info[0].library.currentRead.title}
+      <div id="Profile">
+        <div id="username">{info[0].username}</div>
+        <div id="avatar">
+          <Avatar
+            alt="Remy Sharp"
+            src="./avatarPic.jpg"
+            sx={{ width: 70, height: 70 }}
+          />
+        </div>
+      </div>
     </div>
   );
 }

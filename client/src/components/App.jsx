@@ -6,24 +6,25 @@ import LoadingPage from './LoadingPage';
 import Shelf from './Shelf';
 import BookInfo from './BookInfo';
 import AddThought from './AddThought';
+import Grow from './Grow';
+import Root from './Root';
+import NotFound from './NotFound';
+import CurrentBook from './CurrentBook';
+import {
+  Route,
+  Routes,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from 'react-router-dom';
 
 function App() {
   const [info, setInfo] = useState([]);
   const [ready, setReady] = useState(false);
-  const [view, setView] = useState('Home');
+
   useEffect(() => {
     getData();
   }, []);
-  function handleSubmission(data) {
-    axios
-      .patch('/BookWormz/profile', { data: data, username: info[0].username })
-      .then((response) => {
-        getData();
-      })
-      .catch((error) => {
-        console.log('There is an error in the App: ', error);
-      });
-  }
   const getData = () => {
     axios
       .get('/BookWormz/profile')
@@ -41,10 +42,18 @@ function App() {
   return !ready ? (
     <LoadingPage />
   ) : (
-    <div id="App">
-      {/* <Home info={info} /> */}
-      {/* <Shelf info={info} /> */}
-      <AddThought info={info} handleSubmission={handleSubmission} />
+    <div>
+      <Navigation info={info} />
+      <div id="App">
+        <div id="Feed">
+          <div id="homeFeed">
+            <Home info={info} />
+            <div id="currentBookContainer">
+              <CurrentBook book={info[0].currentRead} />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

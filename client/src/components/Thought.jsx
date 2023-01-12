@@ -1,14 +1,22 @@
 import React from 'react';
+import Divider from '@mui/material/Divider';
+import Avatar from '@mui/material/Avatar';
 
 function Thought({ thought, user, currentBook }) {
   return (
-    <div class="thought">
-      <h5>{user}'s Thoughts:</h5>
-      Mood: {thought.mood}
+    <div className="thought">
+      <div className="displayHeader">
+        <b>{thought.username}</b>
+        <div>
+          <Avatar alt="" src={thought.profilePic} />
+        </div>
+        <div className="mood">Mood: {thought.mood}</div>
+      </div>
+      <Divider />
       <div className="thoughtBody">{thought.thought_body}</div>
       <div className="thoughtFooter">
-        Currently Reading: {currentBook.title}
-        Page Number: {thought.page}
+        Currently Reading: <b>{thought.thought_target}</b>
+        <div id="page">Page: {thought.page}</div>
       </div>
     </div>
   );

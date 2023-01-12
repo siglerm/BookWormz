@@ -3,11 +3,11 @@ const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-const { profileRouter } = require('./router');
+const { profileRouter, bookInfoRouter } = require('./router');
 
 const corsOptions = {
   origin: 'http://localhost/BookWormz',
-  methods: ['GET'],
+  methods: ['GET', 'POST', 'PATCH'],
   maxAge: '3600',
 };
 
@@ -19,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(profileRouter);
+app.use(bookInfoRouter);
 app.use(morgan('dev'));
 
 app.set('port', PORT);
